@@ -19,7 +19,7 @@ If we generalize to non-linear decomposition, and ignore any attempt at interpre
 
 
 
-### Installation of this package
+### Installation
 
 Clone/download the repo to a local directory. From the command line:
 

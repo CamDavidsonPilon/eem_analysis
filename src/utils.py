@@ -2,6 +2,9 @@
 
 import numpy as np
 from glob import glob
+import os
+os.environ['PYTHONHASHSEED']="0"
+np.random.seed(0)
 
 FOLDER = "/Users/camerondavidson-pilon/code/eem_conv_autoencoder/"
 INPUT = (28, 28)
@@ -17,8 +20,7 @@ def load_images(prefix=""):
     return  np.expand_dims(M, axis=3)
 
 
-def split_images(M, test_frac=0.05, seed=1):
-    np.random.seed(seed)
+def split_images(M, test_frac=0.05):
     n = M.shape[0]
     n_train_samples = int((1-test_frac) * n)
     ix = np.arange(n)
