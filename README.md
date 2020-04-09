@@ -1,7 +1,7 @@
 ## Autoencoding EEMs
 
 
-EEMs (exciation-emission-matrices) are measurements of a sample's fluorescence intensity at varying excitation and emission wavelengths.
+EEMs (excitation emission matrices) are measurements of a sample's fluorescence intensity at varying excitation and emission wavelengths.
 
 
 
@@ -15,8 +15,7 @@ Traditionally, EEMs have been analyzed using linear matrix decomposition methods
 4. No additional scattering is present
 
 
-If we relax the linear constraint, and ignore any attempt at interpretation
-
+If we generalize to non-linear decomposition, and ignore any attempt at interpretation, we can expand the models used. Namely, we can try a convolutional autoencoder.
 
 
 
