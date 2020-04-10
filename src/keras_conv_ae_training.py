@@ -10,7 +10,7 @@ from keras.utils import plot_model
 from scipy.special import logit
 
 train_images, test_images = split_images(load_images())
-LATENT_DIM_SIZE = 13
+LATENT_DIM_SIZE = 10
 
 # Encoder
 inp = Input(INPUT + (1,))
@@ -48,7 +48,7 @@ filepath = FOLDER + "trained_models/simple_keras_conv_ae.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', save_best_only=True)
 
 # fit the model
-ae.compile(optimizer="adam", loss="mean_absolute_error")
+ae.compile(optimizer="nadam", loss="mean_absolute_error")
 ae.fit(train_images, train_images,
         validation_data=(test_images, test_images),
         epochs=1000,

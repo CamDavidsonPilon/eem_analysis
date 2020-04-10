@@ -1,12 +1,11 @@
 # utils
-
 import numpy as np
 from glob import glob
 import os
 os.environ['PYTHONHASHSEED']="0"
 np.random.seed(0)
 
-FOLDER = "/Users/camerondavidson-pilon/code/eem_conv_autoencoder/"
+FOLDER = os.getcwd()
 INPUT = (28, 28)
 
 
