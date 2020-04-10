@@ -5,12 +5,20 @@ from keras.models import Model
 from keras.layers import Dense, Conv2D, Input, Reshape, Flatten, Conv2DTranspose, MaxPooling2D, BatchNormalization
 from keras.optimizers import adam
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from utils import FOLDER, INPUT, load_images, split_images
+from utils import FOLDER, INPUT, load_images_and_labels, split_images_and_labels, concat_and_expand, filter_images_and_labels
 from keras.utils import plot_model
 from scipy.special import logit
 
-train_images, test_images = split_images(load_images())
-LATENT_DIM_SIZE = 10
+train_images_and_labels, test_images_and_labels = (
+    split_images_and_labels(
+    filter_images_and_labels(
+        load_images_and_labels(), lambda image_nt: True # image_nt[1].days < '14'
+        )
+    )
+)
+train_images = concat_and_expand([_[0] for _ in train_images_and_labels])
+test_images = concat_and_expand([_[0] for _ in test_images_and_labels])
+LATENT_DIM_SIZE = 12
 
 # Encoder
 inp = Input(INPUT + (1,))
