@@ -6,7 +6,7 @@ from keras.models import Model
 from keras.layers import Dense, Conv2D, Input, Reshape, Flatten, Conv2DTranspose, MaxPooling2D, BatchNormalization
 from keras.optimizers import adam
 from keras.callbacks import ModelCheckpoint
-from src.utils import FOLDER, load_images, INPUT, concat_and_expand
+from src.utils import FOLDER, load_images, INPUT
 
 def load_encoder():
     encoder = keras.models.load_model(FOLDER + "trained_models/simple_keras_conv_encoder.h5")
@@ -17,7 +17,8 @@ def load_decoder():
     return decoder
 
 
-images = concat_and_expand(load_images())
+#images = concat_and_expand(load_images())
+images = load_images()
 encoder = load_encoder()
 encoder.summary()
 
