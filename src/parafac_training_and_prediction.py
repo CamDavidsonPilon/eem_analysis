@@ -4,9 +4,10 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from keras.utils import plot_model
 
-from src.utils import FOLDER, INPUT, load_images, split_images
+from src.utils import *
 
-train_images, test_images = split_images(load_images())
+train_images_and_labels, _ = split_images_and_labels(load_images_and_labels())
+train_images, _ = collapse_images_to_single_matrix(train_images_and_labels)
 LATENT_DIM_SIZE = 12
 
 
@@ -20,20 +21,18 @@ prediction_images = tl.kruskal_to_tensor(results)
 
 for _id in np.arange(1, 200, 40):
     fig = plt.figure(figsize=(6, 8))
-    axes = fig.subplots(3, 1)
+    axes = fig.subplots(2, 1)
 
     axes[0].imshow(train_images[_id].reshape(*INPUT))
     axes[0].set_title("Actual")
 
-
-    axes[2].imshow(prediction_images[_id].reshape(*INPUT))
-    axes[2].set_title("Reconstructed")
+    axes[1].imshow(prediction_images[_id].reshape(*INPUT))
+    axes[1].set_title("Reconstructed")
 
 
 plt.show(block=True)
 
 # MAE - I can only compare evaluation of training images
-
 running_sum = 0
 running_count = 0
 for predicted, actual in zip(prediction_images, train_images):

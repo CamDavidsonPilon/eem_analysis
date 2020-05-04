@@ -5,11 +5,14 @@ from keras.models import Model
 from keras.layers import Dense, Conv2D, Input, Reshape, Flatten, Conv2DTranspose, MaxPooling2D, BatchNormalization
 from keras.optimizers import adam
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from utils import FOLDER, INPUT, load_images
+from utils import *
 from keras.utils import plot_model
 from scipy.special import logit
 
-train_images, test_images = split_images(load_images())
+train_images_and_labels, test_images_and_labels = split_images_and_labels(remove_rayleigh(load_images_and_labels()))
+train_images = collapse_images_to_single_matrix(train_images_and_labels)[0]
+test_images = collapse_images_to_single_matrix(test_images_and_labels)[0]
+
 LATENT_DIM_SIZE = 12
 
 # Encoder
@@ -44,18 +47,18 @@ ae = Model(inp, outputs, name='ae')
 ae.summary()
 
 
-filepath = FOLDER + "trained_models/simple_keras_conv_ae.h5"
+filepath = FOLDER + "trained_models/simple_keras_conv_ae_no_rayleigh.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', save_best_only=True)
 
 # fit the model
 ae.compile(optimizer="nadam", loss="mean_absolute_error")
 ae.fit(train_images, train_images,
         validation_data=(test_images, test_images),
-        epochs=1000,
+        epochs=600,
         batch_size=100,
         callbacks=[checkpoint])
 
 
-encoder.save('trained_models/simple_keras_conv_encoder.h5')
-decoder.save('trained_models/simple_keras_conv_decoder.h5')
+encoder.save('trained_models/simple_keras_conv_encoder_no_rayleigh.h5')
+decoder.save('trained_models/simple_keras_conv_decoder_no_rayleigh.h5')
 
