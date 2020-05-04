@@ -19,12 +19,12 @@ If we generalize to non-linear decomposition, and ignore any attempt at interpre
 
 PARAFAC does do a better job when scattering is reduced. If we apply a naive Rayleigh scattering filter to our EEMS:
 
-![comparision2](https://i.imgur.com/XGMIzNn.png | width=600px)
+![comparision2](https://i.imgur.com/XGMIzNn.png)
 
 
 In the comparison above, the convolutional autoencoder, henceforth CNN-AE, squeezes the 28x28 data into 12 dimensions. From these 12 dimensions, further dimensionality reduction can be applied, like PCA. The following figure is a PCA-reduced dataset of four vegetables' EEMS:
 
-![pca](https://i.imgur.com/AwDAdrV.png | width=600px)
+![pca](https://i.imgur.com/AwDAdrV.png)
 
 We can clearly see the clusters of vegetables are almost perfectly separated, hence their original EEMs have enough information to distinguish vegetables.
 
@@ -34,7 +34,7 @@ We can clearly see the clusters of vegetables are almost perfectly separated, he
 Encoder -> Decoder.
 
 
-![network](https://i.imgur.com/FRYHunI.png | width=600px)
+![network](https://i.imgur.com/FRYHunI.png)
 
 
 ### Installation
@@ -50,7 +50,7 @@ python setup.py
 
 1. Currently the supported EEMs must be NxN (a square). One can use image / scientific software to resize EEMs to be square. Change the `INPUTS` variable in `src/utils.py`.
 2. Data, in the form of csv (with `.csv` extension), should be put into the folder `data/flat_files`.
-3. To added labelling information, you can user `-` delimiters in the filename and edit the `Labels` in `src/utils.py`.
+3. To added labeling information, you can user `-` delimiters in the filename and edit the `Labels` in `src/utils.py`.
 
 
 ### Running on an example dataset
