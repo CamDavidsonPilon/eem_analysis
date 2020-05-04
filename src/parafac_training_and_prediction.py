@@ -6,7 +6,7 @@ from keras.utils import plot_model
 
 from src.utils import *
 
-train_images_and_labels, _ = split_images_and_labels(load_images_and_labels())
+train_images_and_labels, _ = split_images_and_labels(remove_rayleigh(load_images_and_labels()))
 train_images, _ = collapse_images_to_single_matrix(train_images_and_labels)
 LATENT_DIM_SIZE = 12
 
@@ -41,4 +41,5 @@ for predicted, actual in zip(prediction_images, train_images):
 
 
 print(running_sum / running_count)
-# 19.4353
+# 19.4353   - with rayleigh scattering present
+# 2.0917471 - without rayleigh

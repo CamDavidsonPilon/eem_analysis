@@ -6,7 +6,7 @@ from keras.utils import plot_model
 from src.keras_encoder_reconstruction import load_encoder, load_decoder
 from src.utils import *
 
-train_images_and_labels, _ = split_images_and_labels(load_images_and_labels())
+train_images_and_labels, _ = split_images_and_labels(remove_rayleigh(load_images_and_labels()))
 train_images, _ = collapse_images_to_single_matrix(train_images_and_labels)
 LATENT_DIM_SIZE = 12
 
@@ -27,7 +27,7 @@ prediction = encoder.predict(images_for_cnn)
 prediction_images_cnn = decoder.predict(prediction)
 
 
-_id = 12
+_id = 16
 
 fig = plt.figure(figsize=(6, 8))
 axes = fig.subplots(3, 1)

@@ -17,6 +17,10 @@ If we generalize to non-linear decomposition, and ignore any attempt at interpre
 
 ![comparison](https://i.imgur.com/2t2CdT4.png)
 
+PARAFAC does do a better job when scattering is reduced. If we apply a naive Rayleigh scattering filter to our EEMS:
+
+![comparision2](https://i.imgur.com/XGMIzNn.png)
+
 
 In the comparison above, the convolutional autoencoder, henceforth CNN-AE, squeezes the 28x28 data into 12 dimensions. From these 12 dimensions, further dimensionality reduction can be applied, like PCA. The following figure is a PCA-reduced dataset of four vegetables' EEMS:
 
