@@ -15,16 +15,16 @@ Traditionally, EEMs have been analyzed using linear matrix decomposition methods
 
 If we generalize to non-linear decomposition, and ignore any attempt at interpretation, we can expand the models used. Namely, we can try a convolutional autoencoder to project the 2D EEMs to a lower space, and perform analysis there. The convolutional autoencoder has a much more accurate compression than alternative methods like PARAFAC. (This also means that the decompression is more accurate, as seen in the image below.)
 
-![comparison](https://i.imgur.com/2t2CdT4.png)
+![comparison](https://i.imgur.com/2t2CdT4l.png)
 
 PARAFAC does do a better job when scattering is reduced. If we apply a naive Rayleigh scattering filter to our EEMS:
 
-![comparision2](https://i.imgur.com/XGMIzNn.png)
+![comparision2](https://i.imgur.com/XGMIzNnl.png)
 
 
 In the comparison above, the convolutional autoencoder, henceforth CNN-AE, squeezes the 28x28 data into 12 dimensions. From these 12 dimensions, further dimensionality reduction can be applied, like PCA. The following figure is a PCA-reduced dataset of four vegetables' EEMS:
 
-![pca](https://i.imgur.com/AwDAdrV.png)
+![pca](https://i.imgur.com/AwDAdrVl.png)
 
 We can clearly see the clusters of vegetables are almost perfectly separated, hence their original EEMs have enough information to distinguish vegetables.
 
@@ -34,7 +34,7 @@ We can clearly see the clusters of vegetables are almost perfectly separated, he
 Encoder -> Decoder.
 
 
-![network](https://i.imgur.com/FRYHunI.png)
+![network](https://i.imgur.com/FRYHunIl.png)
 
 
 ### Installation
