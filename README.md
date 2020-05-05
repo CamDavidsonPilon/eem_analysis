@@ -34,7 +34,7 @@ We can clearly see the clusters of vegetables are almost perfectly separated, he
 Encoder -> Decoder.
 
 
-![network](https://i.imgur.com/FRYHunIl.png)
+![network](https://i.imgur.com/FRYHunI.png)
 
 
 ### Installation
@@ -43,7 +43,7 @@ Encoder -> Decoder.
 2. Optional: create a virtualenv for this.
 3. From the command line:
 ```
-python setup.py
+python setup.py install
 ```
 
 ### Configuration
@@ -52,9 +52,9 @@ python setup.py
 2. Data, in the form of csv (with `.csv` extension), should be put into the folder `data/flat_files`.
 3. To added labeling information, you can user `-` delimiters in the filename and edit the `Labels` in `src/utils.py`.
 
-
 ### Running on an example dataset
 
 ```
 python src/keras_conv_ae_training.py && python src/keras_encoder_reconstruction.py
 ```
+
